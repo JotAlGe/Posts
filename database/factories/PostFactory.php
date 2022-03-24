@@ -17,7 +17,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'content' => $this->faker->realText(),
+            'photo' => $this->faker->url('https://picsum.photos/90'),
+            'user_id' => rand(1, 10)
         ];
     }
 }
