@@ -23,12 +23,6 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreignId('like_id')
-                ->nullable()
-                ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
-
             $table->timestamps();
         });
     }
