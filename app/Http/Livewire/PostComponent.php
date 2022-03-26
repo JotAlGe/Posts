@@ -10,7 +10,7 @@ class PostComponent extends Component
     public function render()
     {
         return view('livewire.post-component', [
-            'posts' => Post::all()
+            'posts' => Post::OrderBy('created_at', 'desc')->paginate(10)
         ]);
     }
 }

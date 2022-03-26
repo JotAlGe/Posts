@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'content' => $this->faker->realText(),
-            'photo' => $this->faker->url('https://picsum.photos/90'),
+            'photo' => $this->faker->optional()->imageUrl(500, 500),
             'user_id' => rand(1, 10)
         ];
     }

@@ -2,11 +2,19 @@
     @forelse ($posts as $post)
         <!--Title-->
         <div class="font-sans pb-3">
-            <a href="#" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">{{ $post->user->name }}</a>
-            <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Welcome to Minimal Blog</h1>
-            <p>
-                {{ $post->content }}
-            </p>
+            <div class="w-full">
+                <a href="#" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">{{ $post->user->name}}</a>
+
+                <p>
+                    {{ $post->content }}
+                </p>
+                @if($post->photo != null)
+                    <img class="max-w-fit mx-auto max-w-xs mx-w-xl mt-3"
+                         src="{{ $post->photo }}"
+                         alt="">
+                @endif
+            </div>
+
             <div class="flex justify-between">
 
                 {{-- like --}}
@@ -26,7 +34,10 @@
         <br>
     @empty
         <h2>No hay posts para ver...</h2>
-    @endforelse
+        @endforelse
+
+        {{-- pagination --}}
+        {{ $posts->links() }}
 </div>
 
 
