@@ -71,4 +71,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+
+    // relation with comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

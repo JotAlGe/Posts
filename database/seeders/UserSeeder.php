@@ -16,6 +16,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        User::factory([
+            'name' => 'Juan',
+            'email' => 'juan@gmail.com',
+            'password' => bcrypt('12345678')
+        ])->create();
+
         User::factory()
             ->count(5)
             ->has(Post::factory()->count(10))

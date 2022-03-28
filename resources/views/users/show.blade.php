@@ -16,7 +16,7 @@
         <div class="col-start-4 col-span-6 mx-auto bg-white shadow-md rounded-md px-6 py-4 my-6">
             <div class="sm:flex sm:justify-between">
                 <div class="flex items-center">
-                    <img class="h-12 w-12 rounded-full" src="https://lh3.googleusercontent.com/a-/AOh14Gi0DgItGDTATTFV6lPiVrqtja6RZ_qrY91zg42o-g" alt="">
+                    <img class="h-12 w-12 rounded-full" src="{{ $user->photo }}" alt="Foto de {{ $user->name }}">
                     <div class="ml-2">
                         <h3 class="text-lg text-green-500 font-medium">
                             {{ $user->name }}
@@ -37,19 +37,19 @@
                     <span class="mt-2 text-xl font-medium text-gray-800">{{ $user->created_at->diffForHumans() }}</span>
                 </div>
                 <div>
-                    <h4 class="text-gray-600 text-sm">Submissions</h4>
-                    <span class="mt-2 text-xl font-medium text-gray-800">12171</span>
+                    <h4 class="text-gray-600 text-sm">Posteos</h4>
+                    <span class="mt-2 text-xl font-medium text-gray-800">{{ $user->posts->count() }}</span>
                 </div>
                 <div>
-                    <h4 class="text-gray-600 text-sm">Reviews</h4>
-                    <span class="mt-2 text-xl font-medium text-gray-800">35</span>
+                    <h4 class="text-gray-600 text-sm">Comentarios</h4>
+                    <span class="mt-2 text-xl font-medium text-gray-800">{{ $user->comments->count() }}</span>
                 </div>
             </div>
             <div class="mt-3">
                 <h4 class="text-gray-600 text-sm">User Score</h4>
                 <span class="mt-2 text-xl font-medium text-gray-800">21%</span>
             </div>
-            
+
             <a class="block mt-4 text-green-500 hover:underline" href="{{ route('dashboard') }}">Volver</a>
         </div>
     </div>
