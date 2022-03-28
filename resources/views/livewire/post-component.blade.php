@@ -3,7 +3,7 @@
         <!--Title-->
         <div class="font-sans pb-3">
             <div class="w-full">
-                <a href="#" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">{{ $post->user->name}}</a>
+                <a href="{{route('users.show', $post->user->id)}}" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">{{ $post->user->name}}</a>
 
                 <p>
                     {{ $post->content }}

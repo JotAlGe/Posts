@@ -1,0 +1,1 @@
+Qué hacés {{ $user->name }} ?
