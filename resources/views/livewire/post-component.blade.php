@@ -1,4 +1,5 @@
 <div>
+
     @forelse ($posts as $post)
         <!--Title-->
         <div class="font-sans pb-3">
