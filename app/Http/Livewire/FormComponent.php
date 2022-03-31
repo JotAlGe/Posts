@@ -34,11 +34,9 @@ class FormComponent extends Component
             'content' => $this->post,
             'user_id' => auth()->user()->id
         ]);
-        $post = new Post;
-        $this->reset('post');
 
-        //return dd(auth()->user()->id);
-        //session()->flash('success', 'Todo ok');
+        $this->reset('post');
+        return redirect()->to('/dashboard');
     }
 
     public function render()
