@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Post;
+use GrahamCampbell\ResultType\Success;
 use Livewire\Component;
 
 class FormComponent extends Component
@@ -20,6 +22,23 @@ class FormComponent extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+    }
+
+    // save post
+    public function store()
+    {
+        // validate
+        $this->validate();
+
+        Post::create([
+            'content' => $this->post,
+            'user_id' => auth()->user()->id
+        ]);
+        $post = new Post;
+        $this->reset('post');
+
+        //return dd(auth()->user()->id);
+        //session()->flash('success', 'Todo ok');
     }
 
     public function render()

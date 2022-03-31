@@ -9,6 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
+    // fillable
+    protected $fillable = ['content', 'user_id'];
+
     // relation with comments
     public function comments()
     {

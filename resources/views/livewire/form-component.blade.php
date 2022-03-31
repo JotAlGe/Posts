@@ -16,8 +16,16 @@
             </div>
         </div>
         <div class="flex justify-end">
-        <button class="border-2 border-green-500 text-black px-4 py-2 rounded-md text-1xl font-medium hover:bg-green-500 transition duration-300">Publicar</button>
+        <button
+            wire:click="store"
+            class="border-2 border-green-500 text-black px-4 py-2 rounded-md text-1xl font-medium hover:bg-green-500 transition duration-300">
+            Publicar
+        </button>
         </div>
+
+        {{-- @if (session()->has('success'))
+            {{ session('success') }}
+        @endif --}}
 
         {{-- error message --}}
         @include('partials.error')
