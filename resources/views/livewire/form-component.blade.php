@@ -1,7 +1,17 @@
 <div>
 
+    {{-- temporary image --}}
+    @if ($photo != null)
+        <div
+            style="max-width: 100%; height: 200px; background: url('{{ $photo->temporaryUrl() }}');
+            background-size:cover; background-position: center; font-size: 5rem;"
+            class="mx-auto">
+            <p class="text-green-600 font-bold text-center">¿Publicar esta imagen?</p>
+        </div>
+    @endif
+
     <!-- component -->
-    <div class="w-full max-w-sm mx-auto mb-4">
+    <div class="w-full max-w-sm mx-auto mb-4 mt-4">
         <!-- Message field -->
         <div class="flex flex-wrap mb-4">
             <div class="relative w-full appearance-none label-floating">
@@ -10,8 +20,9 @@
                     class="autoexpand tracking-wide py-2 px-4 mb-1 leading-relaxed appearance-none block w-full bg-green-200 border border-green-200 rounded focus:outline-none focus:bg-white focus:border-green-500"
                     id="message"
                     type="text"
-                    placeholder="Message..."></textarea>
-                    <label for="message" class="absolute tracking-wide py-2 px-4 opacity-0 leading-tight block top-0 left-0 cursor-text">Message...
+                    placeholder="Message...">
+                </textarea>
+                <label for="message" class="absolute tracking-wide py-2 px-4 opacity-0 leading-tight block top-0 left-0 cursor-text">Message...
                 </label>
 
             </div>
@@ -19,6 +30,7 @@
 
         {{-- button --}}
         <div class="flex justify-end">
+
             {{-- photo --}}
             <input
                 wire:model="photo"
@@ -42,13 +54,15 @@
 
                 Publicar
             </button>
+
         </div>
 
         {{-- error message --}}
         @include('partials.error')
 
         {{-- ---------------------------------- --}}
-        @include('partials.error-image'){{-- image errors --}}
+
+        @includeWhen($photo, 'partials.error-image'){{-- image errors --}}
         {{-- ---------------------------------- --}}
     </div>
 </div>

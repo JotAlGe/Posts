@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 use GrahamCampbell\ResultType\Success;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -40,10 +41,11 @@ class FormComponent extends Component
 
         Post::create([
             'content' => $this->post,
+            'photo' => Storage::url($this->photo->store('public/photos')),
             'user_id' => auth()->user()->id
         ]);
 
-        $this->reset('post');
+        $this->reset(['post', 'photo']);
         return redirect()->to('/dashboard');
     }
 

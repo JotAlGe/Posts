@@ -1,5 +1,4 @@
 <div>
-
     @forelse ($posts as $post)
         <!--Title-->
         <div class="font-sans pb-3">
@@ -10,9 +9,11 @@
                     {{ $post->content }}
                 </p>
                 @if($post->photo != null)
-                    <img class="max-w-fit mx-auto max-w-xs mx-w-xl mt-3"
-                         src="{{ $post->photo }}"
-                         alt="">
+                    <img class="mx-auto mt-3"
+                         src="{{ asset($post->photo) }}"
+                         alt=""
+                         style="max-width: 50%; max-height: 350px; object-fit: cover;"
+                         >
                 @endif
             </div>
 
