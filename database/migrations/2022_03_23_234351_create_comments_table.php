@@ -22,10 +22,17 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreignId('post_id')
+            // este bloque de código causó un error al ejecutar las migraciones
+            /* $table->foreignId('post_id')
                 ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete() 
+                ->cascadeOnUpdate(); */
+            //////////////////////////////////////////////////////////////////
+            
+            $table->foreignId('post_id')
+                ->constrainded()
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->timestamps();
         });

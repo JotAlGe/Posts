@@ -8,14 +8,13 @@
                 <p>
                     {{ $post->content }}
                 </p>
-                @if($post->photo != null)
-                    <img class="mx-auto mt-3"
-                         src="{{ asset($post->photo) }}"
-                         alt=""
-                         style="max-width: 50%; max-height: 350px; object-fit: cover;"
-                         >
-                @endif
             </div>
+            @if($post->photo != null)
+                <img class="mx-auto mt-3"
+                     src="{{ asset($post->photo) }}"
+                     style="max-width: 50%; max-height: 350px; object-fit: cover;"
+                     >
+            @endif
 
             <div class="flex justify-between">
 
