@@ -13,8 +13,8 @@ class FormComponent extends Component
 
     use WithFileUploads;
 
-    public $photo;
-    public $post;
+    public $photo = '';
+    public $post = '';
     protected $rules = [
         'post' => ['required', 'min:5', 'max:255'],
         'photo' => ['mimes:jpg, png', 'max:2048']
@@ -34,17 +34,21 @@ class FormComponent extends Component
     }
 
     // save post
-    public function store()
-    {
-        // validate
+
+    public function store(){
         $this->validate();
 
-        Post::create([
+        /* Post::create([
             'content' => $this->post,
             'photo' => Storage::url($this->photo->store('public/photos')),
             'user_id' => auth()->user()->id
-        ]);
-
+        ]); */
+        Post::create([
+            'content' => $this->post,
+            'photo' => $this->photo != null ? Storage::url($this->photo->store('public/photos')) : '',
+            'user_id' => auth()->user()->id
+        ]); 
+        
         $this->reset(['post', 'photo']);
         return redirect()->to('/dashboard');
     }
