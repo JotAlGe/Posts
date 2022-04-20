@@ -7,6 +7,7 @@ use App\Models\Post;
 
 class PostComponent extends Component
 {
+
     public function render()
     {
         return view('livewire.post-component', [

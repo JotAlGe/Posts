@@ -12,7 +12,7 @@
      
     <!-- component -->
     <div class="w-full max-w-sm mx-auto mb-4 mt-4">
-        <!-- Message field -->
+        <!-- Post field -->
         <div class="flex flex-wrap mb-4">
             <div class="relative w-full appearance-none label-floating">
                 <textarea
@@ -29,12 +29,13 @@
 
         {{-- button --}}
         <div class="flex justify-end">
-
+            
             {{-- photo --}}
             <input
                 wire:model="photo"
                 class="block w-full text-sm text-gray-200 bg-gray-50 rounded-lg border border-gray-300
-                    cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400"                              aria-describedby="user_avatar_help"
+                    cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400" 
+                aria-describedby="user_avatar_help"
                 id="user_avatar"
                 type="file"
             >

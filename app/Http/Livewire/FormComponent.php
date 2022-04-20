@@ -38,14 +38,9 @@ class FormComponent extends Component
     public function store(){
         $this->validate();
 
-        /* Post::create([
-            'content' => $this->post,
-            'photo' => Storage::url($this->photo->store('public/photos')),
-            'user_id' => auth()->user()->id
-        ]); */
         Post::create([
             'content' => $this->post,
-            'photo' => $this->photo != null ? Storage::url($this->photo->store('public/photos')) : '',
+            'photo' => $this->photo != null ? Storage::url($this->photo->store('public/photos')) : null,
             'user_id' => auth()->user()->id
         ]); 
         
