@@ -9,7 +9,7 @@
                     {{ $post->content }}
                 </p>
             </div>
-            
+                        
             @if($post->photo != null)
                 <img class="mx-auto mt-3"
                     src="{{ asset($post->photo) }}"
@@ -18,19 +18,20 @@
             @endif
             
             <div class="flex justify-between">
-
+                
                 {{-- like --}}
                 <div>
                     <button
-                    wire:click="like({{ $post->id }}, {{ $post->user->id }})"
+                    wire:click="like({{ $post->id }}, {{ auth()->user()->id }})"
                     >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" 
                         
+                    {{-- recorro los likes para cambiarle el color --}}
                         @foreach ($post->likes as $like)
-                        @if ($like->fill == 1)
-                            fill="red"
-                            stroke-width="0"
-                        @endif
+                            @if ($like->fill == 1 && auth()->user()->id == $like->user_id)
+                                fill="red"
+                                stroke-width="0"
+                            @endif
                         
                         @endforeach
                              viewBox="0 0 24 24"
@@ -41,7 +42,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                     </button>
-                    {{ $post->likes->count() != 0 ?? $post->likes->count() }}
+                    
+                    {{ $post->likes->count() > 0 ? $post->likes->count() : '' }}
                 </div>
 
                 {{-- date --}}
