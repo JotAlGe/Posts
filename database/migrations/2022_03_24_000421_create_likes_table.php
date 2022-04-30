@@ -26,7 +26,6 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            #$table->boolean('fill')->default(false);
             $table->tinyInteger('fill')->default(0);
             $table->timestamps();
         });
