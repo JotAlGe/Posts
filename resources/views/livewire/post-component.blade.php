@@ -6,8 +6,15 @@
             <div class="w-full flex justify-between">
                 <a href="{{route('users.show', $post->user->id)}}" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">{{ $post->user->name}}
                 </a>
+
                 {{-- button show menu --}}
-                @livewire('menu-post')
+                @if (auth()->user()->id == $post->user->id)
+                    @livewire('menu-post', [
+                        'id_post' => $post->id,
+                        'photo' => $post->photo
+                        ])
+                @endif
+                    
             </div>
             
             <p>
